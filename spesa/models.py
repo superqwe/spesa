@@ -5,4 +5,4 @@ class Prodotto(models.Model):
     da_comprare = models.BooleanField(default=True)
 
     def __str__(self):
-        return '%s %s' % (self.nome, self.da_comprare)
+        return '%s - %s' % (self.nome, self.da_comprare)
