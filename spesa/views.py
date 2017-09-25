@@ -1,4 +1,6 @@
+from django.core import serializers
 from django.http import HttpResponse
+from django.http import JsonResponse
 from django.shortcuts import render
 
 from .models import Prodotto
@@ -13,15 +15,25 @@ def index(request):
 
 def lista_da_comprare(request):
     out = Prodotto.objects.order_by('nome').filter(da_comprare=True)
-    titolo = 'da Comprare'
-    context = {'prodotti': out, 'titolo': titolo}
+    out_json = serializers.serialize('json', out)
+    out_json = {"dati": out_json}
 
-    return render(request, 'spesa/lista_prodotti.html', context)
+    return JsonResponse(out_json)
 
 
 def lista_comprati(request):
     out = Prodotto.objects.order_by('nome').filter(da_comprare=False)
-    titolo = 'Comprati'
-    context = {'prodotti': out, 'titolo': titolo}
+    out_json = serializers.serialize('json', out)
+    out_json = {"dati": out_json}
+
+    return JsonResponse(out_json)
+
+
+def liste(request):
+    da_comprare = Prodotto.objects.order_by('nome').filter(da_comprare=True)
+    comprato = Prodotto.objects.order_by('nome').filter(da_comprare=False)
+
+    context = {'da_comprare': da_comprare,
+               'comprato': comprato}
 
     return render(request, 'spesa/lista_prodotti.html', context)

@@ -1,6 +1,13 @@
-<h1>Prodotti {{titolo}}</h1>
+<h1>Da Comprare</h1>
 <ul>
-    {% for prodotto in prodotti %}
+    {% for prodotto in da_comprare %}
+    <li>{{prodotto.nome}}</li>
+    {% endfor %}
+</ul>
+
+<h1>Comprati</h1>
+<ul>
+    {% for prodotto in comprato %}
     <li>{{prodotto.nome}}</li>
     {% endfor %}
 </ul>
