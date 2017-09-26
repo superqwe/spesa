@@ -4,7 +4,7 @@ from .models import Prodotto
 
 
 class ProdottoAdmin(admin.ModelAdmin):
-    list_display = ('nome', 'da_comprare')
+    list_display = ('da_comprare', 'nome')
 
 
 admin.site.register(Prodotto, ProdottoAdmin)
