@@ -105,6 +105,7 @@ venv.bak/
 /db.sqlite3
 *.bat
 /.idea/
+spesa/migrations/
 
 
 
