@@ -14,7 +14,7 @@ def index(request, azione=None, pk=None):
         if azione == 'acquistato':
             acquisto.stato = 1
 
-        elif azione == 'eliminato':
+        elif azione == 'elimina':
             acquisto.stato = 0
 
         elif azione == 'riacquista':

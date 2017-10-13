@@ -5,26 +5,32 @@
 
     <h1>Da Comprare {{n_comprato}}/{{n_totale}}</h1>
 
-    <div class="row">
+    <div class="row ">
 
         {% for acquisto in da_comprare %}
-        <div class="col-12 prodotto riquadro">
+        <div class="col-12 prodotto ">
 
+            <div class="row">
 
-            <form action="/spesa/acquistato/{{acquisto.pk}}">
-                <button type="submit">
-                    <i class="material-icons">shopping_cart</i>
+                <div class="col-2 ">
+                    <form action="/spesa/acquistato/{{acquisto.pk}}">
+                        <button type="submit">
+                            <i class="material-icons">shopping_cart</i>
+                        </button>
+                    </form>
+                </div>
+
+                <div class="col-10 ">
                     <div>
                         {{acquisto.quantita}}x
                         {{acquisto.prodotto}}
-
                     </div>
                     <div>
                         prezzo
                     </div>
-                </button>
-            </form>
+                </div>
 
+            </div>
 
         </div>
         {% endfor %}
@@ -33,14 +39,50 @@
 
 </section>
 
+
+
 <section>
+
     <h1>Comprati</h1>
 
-    <ul>
+    <div class="row ">
+
         {% for acquisto in comprato %}
-        <li>{{acquisto.prodotto}}</li>
+        <div class="col-12 prodotto ">
+
+            <div class="row">
+
+                <div class="col-2 ">
+                    <form action="/spesa/riacquista/{{acquisto.pk}}">
+                        <button type="submit">
+                            <i class="material-icons">add_shopping_cart</i>
+                        </button>
+                    </form>
+                    <form action="/spesa/elimina/{{acquisto.pk}}">
+                        <button type="submit">
+                            <i class="material-icons">remove_shopping_cart</i>
+                        </button>
+                    </form>
+                </div>
+
+                <div class="col-10 ">
+                    <div>
+                        {{acquisto.quantita}}x
+                        {{acquisto.prodotto}}
+                    </div>
+                    <div>
+                        prezzo
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
         {% endfor %}
-    </ul>
+
+    </div>
+
 </section>
+
 
 {% endblock%}

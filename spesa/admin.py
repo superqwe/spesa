@@ -2,9 +2,16 @@ from django.contrib import admin
 
 from spesa.models import Acquisto, Prodotto, Negozio, Prezzo
 
+# actions
+def fai_da_comprare(modeladmin, request, queryset):
+    queryset.update(stato=2)
+fai_da_comprare.short_description= 'Segna i selezionati come da comprare'
+
+# opzioni
 
 class AcquistoAdmin(admin.ModelAdmin):
     list_display = ('prodotto', 'quantita', 'stato')
+    actions = [fai_da_comprare]
 
 
 class ProdottoAdmin(admin.ModelAdmin):

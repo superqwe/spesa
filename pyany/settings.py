@@ -24,7 +24,7 @@ SECRET_KEY = 'z83hj%)2_=+8gpmyr)2%el*gtgn_-^20@ru9n89nx^&bwk+9+o'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['superqwe.pythonanywhere.com', '127.0.0.1']
+ALLOWED_HOSTS = ['superqwe.pythonanywhere.com', '127.0.0.1', '192.168.1.5']
 
 # Application definition
 
