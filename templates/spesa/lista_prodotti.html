@@ -4,10 +4,14 @@
 <section>
     <h1>Da Comprare</h1>
 
-    <div class="row">
+    <div class="row riquadro">
         {% for acquisto in da_comprare %}
         <div class="col-12">
-            {{acquisto.prodotto}}
+            <p>
+                {{acquisto.quantita}}x
+                {{acquisto.prodotto}}
+
+            </p>
         </div>
         {% endfor %}
     </div>
