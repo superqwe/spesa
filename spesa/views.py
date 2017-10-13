@@ -1,15 +1,14 @@
-from django.core import serializers
+# from pprint import pprint as pp
+# from pprint import pprint as pp
+
 from django.http import HttpResponse
-from django.http import JsonResponse
 from django.shortcuts import render
 
-from .models import Prodotto
-
-
-# from pprint import pprint as pp
+from spesa.models import Acquisto
 
 
 def index(request):
-    return HttpResponse("ciao bello")
+    da_comprare = Acquisto.objects.filter(stato = '2')
+    comprato = Acquisto.objects.filter(stato = '1')
 
-
+    return render(request, 'spesa/lista_prodotti.html', locals())

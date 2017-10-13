@@ -25,8 +25,8 @@ class Acquisto(models.Model):
     )
 
     prodotto = models.ForeignKey(Prodotto, on_delete=models.CASCADE)
-    quantita = models.IntegerField()
-    stato = models.IntegerField(choices=STATO_PRODOTTO, default=0)
+    quantita = models.IntegerField(default=1)
+    stato = models.IntegerField(choices=STATO_PRODOTTO, default=2)
 
     class Meta:
         verbose_name = "Acquisto"

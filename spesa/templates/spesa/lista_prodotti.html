@@ -1,19 +1,24 @@
-<header>
+{% extends 'spesa/base.html' %}
+
+{% block section %}
+<section>
     <h1><a href="lista_da_comprare">Da Comprare</a></h1>
-</header>
 
 <ul>
-    {% for prodotto in da_comprare %}
-    <li>{{prodotto.nome}}</li>
+    {% for acquisto in da_comprare %}
+    <li>{{acquisto.prodotto}}</li>
     {% endfor %}
 </ul>
+</section>
 
-<header>
+<section>
     <h1><a href="lista_comprati">Comprati</a></h1>
-</header>
 
 <ul>
-    {% for prodotto in comprato %}
-    <li>{{prodotto.nome}}</li>
+    {% for acquisto in comprato %}
+    <li>{{acquisto.prodotto}}</li>
     {% endfor %}
 </ul>
+</section>
+
+{% endblock%}
