@@ -2,23 +2,25 @@
 
 {% block section %}
 <section>
-    <h1><a href="lista_da_comprare">Da Comprare</a></h1>
+    <h1>Da Comprare</h1>
 
-<ul>
-    {% for acquisto in da_comprare %}
-    <li>{{acquisto.prodotto}}</li>
-    {% endfor %}
-</ul>
+    <div class="row">
+        {% for acquisto in da_comprare %}
+        <div class="col-12">
+            {{acquisto.prodotto}}
+        </div>
+        {% endfor %}
+    </div>
 </section>
 
 <section>
-    <h1><a href="lista_comprati">Comprati</a></h1>
+    <h1>Comprati</h1>
 
-<ul>
-    {% for acquisto in comprato %}
-    <li>{{acquisto.prodotto}}</li>
-    {% endfor %}
-</ul>
+    <ul>
+        {% for acquisto in comprato %}
+        <li>{{acquisto.prodotto}}</li>
+        {% endfor %}
+    </ul>
 </section>
 
 {% endblock%}
