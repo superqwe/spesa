@@ -102,9 +102,9 @@ venv.bak/
 
 # mypy
 .mypy_cache/
-/db.sqlite3
+db.sqlite3
 *.bat
-/.idea/
+.idea/
 spesa/migrations/
 
 

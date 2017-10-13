@@ -32,4 +32,29 @@ class Acquisto(models.Model):
         verbose_name_plural = "Acquisti"
 
     def __str__(self):
-        return '%s - %s - %s' % (self.prodotto, self.quantita, self.stato)
+        return '%s - %s' % (self.prodotto, self.quantita)
+
+
+class Negozio(models.Model):
+    nome = models.CharField(max_length=50)
+
+    class Meta:
+        verbose_name = "Negozio"
+        verbose_name_plural = "Negozi"
+
+    def __str__(self):
+        return '%s' % self.nome
+
+
+class Prezzo(models.Model):
+    prodotto = models.ForeignKey(Prodotto, on_delete=models.CASCADE)
+    prezzo = models.DecimalField(max_digits=3, decimal_places=2)
+    prezzo_in_offerta = models.DecimalField(null=True, blank=True, max_digits=3, decimal_places=2)
+    negozio = models.ForeignKey(Negozio, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = "Prezzo"
+        verbose_name_plural = "Prezzi"
+
+    def __str__(self):
+        return '%s - %s - %s' % (self.prodotto, self.negozio, self.prezzo)
