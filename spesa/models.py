@@ -3,14 +3,15 @@ from django.db import models
 
 class Prodotto(models.Model):
     nome = models.CharField(max_length=50)
-    marca = models.CharField(max_length=50)
+    marca = models.CharField(null=True, blank=True, max_length=50)
 
     class Meta:
         verbose_name = "Prodotto"
         verbose_name_plural = "Prodotti"
 
     def __str__(self):
-        return '%s - %s' % (self.nome, self.marca)
+        marca = self.marca if self.marca else ''
+        return '%s - %s' % (self.nome, marca)
 
 
 class Acquisto(models.Model):
