@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css?family=Fjalla+One');
+
+body{
+  font-family: 'Fjalla One', sans-serif;
+}
+
+p.h1{
+  color:            Orange;
+  background-color: DarkSlateGray;
+}
+
+.container-fluid{
+  background-color: DarkSlateGray;
+}
+
+.riquadro{
+  border:           1px solid black;
+
+}
+
+.prodotto{
+  padding:          5px;
+  border:           1px solid coral;
+  border-top:       2px solid Coral ;
+  border-bottom:    2px solid darkorange ;
+
+}
+
+.da-comprare{
+  color:            DarkSlateGray;
+  background-color: orange ;
+}
+
+.comprato{
+  color:            DarkSlateGray;
+  background-color: orangered;
+}

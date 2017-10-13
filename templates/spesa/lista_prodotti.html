@@ -3,12 +3,12 @@
 {% block section %}
 <section>
 
-    <h1>Da Comprare {{n_comprato}}/{{n_totale}}</h1>
+    <p class="h1">Da Comprare {{n_comprato}}/{{n_totale}}</p>
 
     <div class="row ">
 
         {% for acquisto in da_comprare %}
-        <div class="col-12 prodotto ">
+        <div class="col-12 prodotto da-comprare">
 
             <div class="row">
 
@@ -25,9 +25,9 @@
                         {{acquisto.quantita}}x
                         {{acquisto.prodotto}}
                     </div>
-                    <div>
-                        prezzo
-                    </div>
+                    <!--<div>-->
+                        <!--prezzo-->
+                    <!--</div>-->
                 </div>
 
             </div>
@@ -43,12 +43,12 @@
 
 <section>
 
-    <h1>Comprati</h1>
+    <p class="h1">Comprati</p>
 
     <div class="row ">
 
         {% for acquisto in comprato %}
-        <div class="col-12 prodotto ">
+        <div class="col-12 prodotto comprato">
 
             <div class="row">
 
