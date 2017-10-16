@@ -4,13 +4,13 @@ body{
   font-family: 'Fjalla One', sans-serif;
 }
 
-p.h1{
-  color:            Orange;
-  background-color: DarkSlateGray;
+p.h2{
+  color:            pink;
+  background-color: MediumVioletRed ;
 }
 
 .container-fluid{
-  background-color: DarkSlateGray;
+  background-color: MediumVioletRed ;
 }
 
 .riquadro{
@@ -20,18 +20,18 @@ p.h1{
 
 .prodotto{
   padding:          5px;
-  border:           1px solid coral;
-  border-top:       2px solid Coral ;
-  border-bottom:    2px solid darkorange ;
+  border:           1px solid plum;
+  border-top:       2px solid PaleVioletRed   ;
+  border-bottom:    2px solid  plum ;
 
 }
 
 .da-comprare{
-  color:            DarkSlateGray;
-  background-color: orange ;
+  color:            MediumVioletRed ;
+  background-color: pink ;
 }
 
 .comprato{
-  color:            DarkSlateGray;
-  background-color: orangered;
+  color:            MediumVioletRed   ;
+  background-color: HotPink  ;
 }

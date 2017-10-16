@@ -3,7 +3,8 @@
 {% block section %}
 <section>
 
-    <p class="h1">Da Comprare {{n_comprato}}/{{n_totale}}</p>
+    <p class="h2">Da Comprare
+        <span class="badge badge-secondary badge-info">{{n_comprato}}/{{n_totale}}</span> </p>
 
     <div class="row ">
 
@@ -27,7 +28,7 @@
                     </div>
                     <div>
                         {% for prezzo in prezzi%}
-                        <div>{{prezzo.prezzo}}€ - {{prezzo.negozio}}</div>
+                        <div><small>{{prezzo.prezzo}}€ - {{prezzo.negozio}}</small></div>
                         {% endfor %}
                     </div>
                 </div>
@@ -44,7 +45,7 @@
 
 <section>
 
-    <p class="h1">Comprati</p>
+    <p class="h2">Comprati</p>
 
     <div class="row ">
 
