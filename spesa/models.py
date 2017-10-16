@@ -3,6 +3,7 @@ from django.db import models
 
 class Prodotto(models.Model):
     class Meta:
+        ordering = ('nome', 'marca')
         verbose_name = "Prodotto"
         verbose_name_plural = "Prodotti"
 
@@ -29,6 +30,7 @@ class Acquisto(models.Model):
     stato = models.IntegerField(choices=STATO_PRODOTTO, default=2)
 
     class Meta:
+        ordering = ('prodotto',)
         verbose_name = "Acquisto"
         verbose_name_plural = "Acquisti"
 
@@ -37,9 +39,10 @@ class Acquisto(models.Model):
 
 
 class Negozio(models.Model):
-    nome = models.CharField(max_length=50)
+    nome = models.CharField(max_length=50, unique=True)
 
     class Meta:
+        ordering = ('nome',)
         verbose_name = "Negozio"
         verbose_name_plural = "Negozi"
 
@@ -54,9 +57,9 @@ class Prezzo(models.Model):
     negozio = models.ForeignKey(Negozio, on_delete=models.CASCADE)
 
     class Meta:
+        ordering = ('prodotto', 'prezzo','negozio')
         verbose_name = "Prezzo"
         verbose_name_plural = "Prezzi"
-        ordering = ('prezzo',)
 
     def __str__(self):
         return '%s - %s - %s' % (self.prodotto, self.negozio, self.prezzo)
