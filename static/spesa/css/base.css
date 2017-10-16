@@ -4,6 +4,10 @@ body{
   font-family: 'Fjalla One', sans-serif;
 }
 
+nav{
+  border-bottom: 1px solid plum;
+}
+
 p.h2{
   color:            pink;
   background-color: MediumVioletRed ;
