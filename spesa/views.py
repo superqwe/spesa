@@ -4,7 +4,10 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 
+from spesa import views_util
 from spesa.models import Acquisto
+
+from pprint import pprint as pp
 
 
 def index(request, azione=None, pk=None):
@@ -23,6 +26,9 @@ def index(request, azione=None, pk=None):
         acquisto.save()
 
     da_comprare = Acquisto.objects.filter(stato='2')
+    da_comprare = [(acquisto, views_util.prezzo(acquisto.prodotto.nome)) for acquisto in da_comprare]
+    # pp(da_comprare)
+
     comprato = Acquisto.objects.filter(stato='1')
     n_da_comprare = len(da_comprare)
     n_comprato = len(comprato)

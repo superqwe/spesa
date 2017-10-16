@@ -7,7 +7,7 @@
 
     <div class="row ">
 
-        {% for acquisto in da_comprare %}
+        {% for acquisto, prezzi in da_comprare %}
         <div class="col-12 prodotto da-comprare">
 
             <div class="row">
@@ -25,9 +25,11 @@
                         {{acquisto.quantita}}x
                         {{acquisto.prodotto}}
                     </div>
-                    <!--<div>-->
-                        <!--prezzo-->
-                    <!--</div>-->
+                    <div>
+                        {% for prezzo in prezzi%}
+                        <div>{{prezzo.prezzo}}€ - {{prezzo.negozio}}</div>
+                        {% endfor %}
+                    </div>
                 </div>
 
             </div>
@@ -38,7 +40,6 @@
     </div>
 
 </section>
-
 
 
 <section>
@@ -70,9 +71,9 @@
                         {{acquisto.quantita}}x
                         {{acquisto.prodotto}}
                     </div>
-                    <div>
-                        prezzo
-                    </div>
+                    <!--<div>-->
+                        <!--prezzo-->
+                    <!--</div>-->
                 </div>
 
             </div>

@@ -24,7 +24,11 @@ SECRET_KEY = 'z83hj%)2_=+8gpmyr)2%el*gtgn_-^20@ru9n89nx^&bwk+9+o'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['superqwe.pythonanywhere.com', '127.0.0.1', '192.168.1.5']
+ALLOWED_HOSTS = ['superqwe.pythonanywhere.com',
+                 '127.0.0.1',
+                 '192.168.1.2',
+                 '192.168.1.5',
+                 ]
 
 # Application definition
 
@@ -122,6 +126,5 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = (BASE_DIR,)
 
-
 # DjDT
-INTERNAL_IPS = ['127.0.0.1',]
+INTERNAL_IPS = ['127.0.0.1', ]

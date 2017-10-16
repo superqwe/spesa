@@ -2,9 +2,6 @@ from django.db import models
 
 
 class Prodotto(models.Model):
-    nome = models.CharField(max_length=50)
-    marca = models.CharField(null=True, blank=True, max_length=50)
-
     class Meta:
         verbose_name = "Prodotto"
         verbose_name_plural = "Prodotti"
@@ -12,6 +9,9 @@ class Prodotto(models.Model):
     def __str__(self):
         marca = self.marca if self.marca else ''
         return '%s - %s' % (self.nome, marca)
+
+    nome = models.CharField(max_length=50)
+    marca = models.CharField(null=True, blank=True, max_length=50)
 
 
 class Acquisto(models.Model):
@@ -49,13 +49,14 @@ class Negozio(models.Model):
 
 class Prezzo(models.Model):
     prodotto = models.ForeignKey(Prodotto, on_delete=models.CASCADE)
-    prezzo = models.DecimalField(max_digits=3, decimal_places=2)
+    prezzo = models.DecimalField(max_digits=4, decimal_places=2)
     prezzo_in_offerta = models.DecimalField(null=True, blank=True, max_digits=3, decimal_places=2)
     negozio = models.ForeignKey(Negozio, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = "Prezzo"
         verbose_name_plural = "Prezzi"
+        ordering = ('prezzo',)
 
     def __str__(self):
         return '%s - %s - %s' % (self.prodotto, self.negozio, self.prezzo)
