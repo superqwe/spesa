@@ -5,12 +5,11 @@
 {% endblock %}
 
 
-
 {% block section %}
 <section>
 
     <p class="h2">Da Comprare
-        <span class="badge badge-secondary badge-info">{{n_comprato}}/{{n_totale}}</span> </p>
+        <span class="badge badge-secondary badge-info">{{n_comprato}}/{{n_totale}}</span></p>
 
     <div class="row ">
 
@@ -34,7 +33,9 @@
                     </div>
                     <div>
                         {% for prezzo in prezzi%}
-                        <div><small>{{prezzo.prezzo}}€ - {{prezzo.negozio}}</small></div>
+                        <div>
+                            <small>{{prezzo.prezzo}}€ - {{prezzo.negozio}}</small>
+                        </div>
                         {% endfor %}
                     </div>
                 </div>
@@ -63,7 +64,7 @@
                 <div class="col-2 ">
                     <form action="/spesa/riacquista/{{acquisto.pk}}">
                         <button type="submit">
-                            <i class="material-icons">add_shopping_cart</i>
+                            <i class="material-icons">shopping_cart</i>
                         </button>
                     </form>
                     <form action="/spesa/elimina/{{acquisto.pk}}">
@@ -78,9 +79,6 @@
                         {{acquisto.quantita}}x
                         {{acquisto.prodotto}}
                     </div>
-                    <!--<div>-->
-                        <!--prezzo-->
-                    <!--</div>-->
                 </div>
 
             </div>

@@ -17,10 +17,11 @@ from django.conf import settings
 from django.conf.urls import url, include
 from django.contrib import admin
 
+from spesa import views as spesa_view
 from pyany import views
 
 urlpatterns = [
-    url(r'^$', views.index),
+    url(r'^$', spesa_view.index),
     url(r'^admin/', admin.site.urls),
     url(r'^spesa/', include('spesa.urls'))
 ]

@@ -1,0 +1,43 @@
+{% extends 'spesa/base.html' %}
+
+{% block nav %}
+{% include 'spesa/nav.html' %}
+{% endblock %}
+
+
+{% block section %}
+<section>
+
+    <p class="h2">Aggiungi prodotto
+        <span class="badge badge-secondary badge-info"></span></p>
+
+    <div class="row form-group">
+
+        <form action="#" method="post">{% csrf_token %}
+            {% for prodotto in prodotti %}
+            <div class="col-12 ">
+
+                <div class="row prodotto da-comprare">
+                    <div class="col-1">
+                        <input type="checkbox" id="ck{{prodotto.pk}}">
+                    </div>
+                    <!--<div class="col-1 riquadro">-->
+                        <!--<input type="number" min="1" step="1" class="numero" value="1" class="form-control">-->
+                    <!--</div>-->
+                    <div class="col-10">
+                        {{prodotto}}
+                    </div>
+
+                </div>
+
+            </div>
+            {% endfor %}
+            <button type="submit">Aggiungi</button>
+        </form>
+    </div>
+
+</section>
+
+
+
+{% endblock%}
