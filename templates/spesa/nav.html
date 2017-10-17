@@ -2,13 +2,13 @@
     <ul class="nav nav-pills justify-content-end">
 
         <li class="nav-item">
-            <a class="nav-link" href="/spesa">
+            <a class="nav-link {% if pagina == 'spesa' %}active{% endif %}" href="/spesa">
                 <i class="material-icons">shopping_cart</i>
             </a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link"
+            <a class="nav-link {% if pagina == 'aggiungi_prodotti' %}active{% endif %}"
                href="/spesa/listaprodotti">
                 <i class="material-icons">add_shopping_cart</i>
             </a>

@@ -64,4 +64,6 @@ def lista_prodotti_da_aggiungere(request):
                 print(pk)
 
     prodotti = views_util.lista_prodotti_fuori_carrello()
+
+    pagina = 'aggiungi_prodotti'
     return render(request, 'spesa/aggiungi_prodotto.html', locals())
