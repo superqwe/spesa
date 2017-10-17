@@ -13,27 +13,25 @@
 
     <div class="row form-group">
 
-        <form action="#" method="post" name="prodotti">{% csrf_token %}
+        <form action="/spesa/listaprodotti" method="post" name="prodotti">{% csrf_token %}
             {% for prodotto in prodotti %}
             <div class="col-12 ">
 
                 <div class="row prodotto da-comprare">
                     <div class="col-1">
-                        <!--<label>-->
-                            <input type="checkbox" name="ck{{prodotto.pk}}" value="{{prodotto.id}}">
-                            <!--<input type="number" name="ck{{prodotto.pk}}" step="1" value="1">-->
-                            <!--{{prodotto}}-->
-                        <!--</label>-->
+                        <input type="checkbox" name="ck{{prodotto.pk}}" value="{{prodotto.id}}">
                     </div>
                     <div class="col-11">
-                    {{prodotto}}
+                        {{prodotto}}
                     </div>
 
                 </div>
 
             </div>
             {% endfor %}
-            <button type="submit">Aggiungi</button>
+            <div class="col-12 text-center">
+                <button type="submit" class="bottome-aggiungi-prodotti">Aggiungi</button>
+            </div>
         </form>
     </div>
 

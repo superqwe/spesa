@@ -39,3 +39,11 @@ p.h2{
   color:            MediumVioletRed   ;
   background-color: HotPink  ;
 }
+
+.numero{
+  width: 100px;
+}
+
+.bottome-aggiungi-prodotti{
+  margin: 5px;
+}

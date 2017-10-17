@@ -3,6 +3,7 @@
 
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.core.exceptions import ObjectDoesNotExist
 
 from spesa import views_util
 from spesa.models import Acquisto, Prodotto
@@ -37,6 +38,22 @@ def index(request, azione=None, pk=None):
 
     return render(request, 'spesa/spesa.html', locals())
 
+
 def lista_prodotti_da_aggiungere(request):
-    prodotti = Prodotto.objects.all()
+    if request.method == 'POST':
+
+        for pk in request.POST.values():
+            try:
+                acquisto = Acquisto.objects.get(prodotto__id=pk)
+                acquisto.stato = '2'
+                acquisto.save()
+            except Acquisto.DoesNotExist :
+                prodotto = Prodotto.objects.get(id=pk)
+                acquisto = Acquisto.objects.create(prodotto=prodotto, stato='2')
+                acquisto.save()
+
+            except ValueError:
+                print(pk)
+
+    prodotti = views_util.lista_prodotti_fuori_carrello()
     return render(request, 'spesa/aggiungi_prodotto.html', locals())
