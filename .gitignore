@@ -102,10 +102,12 @@ venv.bak/
 
 # mypy
 .mypy_cache/
-db.sqlite3
 *.bat
-.idea/
-spesa/migrations/
+db.sqlite3
+/.idea/
+/bootstrap-4.0.0-beta/
+/spesa/migrations/
+/static/spesa/css/my_bootstrap.css.map
 
 
 

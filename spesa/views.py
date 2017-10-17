@@ -31,9 +31,18 @@ def index(request, azione=None, pk=None):
 
     comprato = Acquisto.objects.filter(stato='1')
 
-    #todo: nel caso di più prezzi per un prodotto, selezionare quello del negozio dove si effettua l'acquisto
+    # todo: nel caso di più prezzi per un prodotto, selezionare quello del negozio dove si effettua l'acquisto
     # seleziona il prezzo più basso
-    prezzo = [views_util.prezzo(acquisto.prodotto.nome)[0].prezzo for acquisto in comprato]
+    # prezzo = [views_util.prezzo(acquisto.prodotto.nome)[0].prezzo for acquisto in comprato]
+    prezzo = []
+    for acquisto in comprato:
+
+        try:
+            p = views_util.prezzo(acquisto.prodotto.nome)[0].prezzo
+            prezzo.append(p)
+        except IndexError:
+            print('*** %s senza prezzo ***' % acquisto.prodotto)
+
     prezzo_totale = sum(prezzo)
 
     n_da_comprare = len(da_comprare)
