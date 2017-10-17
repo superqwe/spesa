@@ -30,6 +30,12 @@ def index(request, azione=None, pk=None):
     da_comprare = [(acquisto, views_util.prezzo(acquisto.prodotto.nome)) for acquisto in da_comprare]
 
     comprato = Acquisto.objects.filter(stato='1')
+
+    #todo: nel caso di più prezzi per un prodotto, selezionare quello del negozio dove si effettua l'acquisto
+    # seleziona il prezzo più basso
+    prezzo = [views_util.prezzo(acquisto.prodotto.nome)[0].prezzo for acquisto in comprato]
+    prezzo_totale = sum(prezzo)
+
     n_da_comprare = len(da_comprare)
     n_comprato = len(comprato)
     n_totale = n_da_comprare + n_comprato
@@ -43,11 +49,13 @@ def lista_prodotti_da_aggiungere(request):
     if request.method == 'POST':
 
         for pk in request.POST.values():
+
             try:
                 acquisto = Acquisto.objects.get(prodotto__id=pk)
                 acquisto.stato = '2'
                 acquisto.save()
-            except Acquisto.DoesNotExist :
+
+            except Acquisto.DoesNotExist:
                 prodotto = Prodotto.objects.get(id=pk)
                 acquisto = Acquisto.objects.create(prodotto=prodotto, stato='2')
                 acquisto.save()
