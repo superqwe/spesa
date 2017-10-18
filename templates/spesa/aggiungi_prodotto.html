@@ -13,9 +13,9 @@
 
     <div class="row form-group">
 
-        <form action="/spesa/listaprodotti" method="post" name="prodotti">{% csrf_token %}
-            {% for prodotto in prodotti %}
-            <div class="col-12 ">
+        <div class="col-12 ">
+            <form action="/spesa/listaprodotti" method="post" name="prodotti">{% csrf_token %}
+                {% for prodotto in prodotti %}
 
                 <div class="row prodotto da-comprare">
                     <div class="col-2 text-center">
@@ -27,11 +27,11 @@
 
                 </div>
 
-            </div>
-            {% endfor %}
-            <div class="col-12 text-center">
-                <button type="submit" class="bottome-aggiungi-prodotti">Aggiungi</button>
-            </div>
+                {% endfor %}
+        </div>
+        <div class="col-12 text-center">
+            <button type="submit" class="bottome-aggiungi-prodotti">Aggiungi</button>
+        </div>
         </form>
     </div>
 

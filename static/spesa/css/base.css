@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css?family=Fjalla+One');
+/*@import url('https://fonts.googleapis.com/css?family=Fjalla+One');*/
 
-body{
+/*body{
   font-family: 'Fjalla One', sans-serif;
-}
+}*/
 
 /*nav{
   border-bottom: 1px solid plum;
@@ -10,12 +10,12 @@ body{
 
 p.h2{
   color:            pink;
-  background-color: MediumVioletRed ;
+  /*background-color: MediumVioletRed ;*/
 }
 
-.container-fluid{
+/*.container-fluid{
   background-color: MediumVioletRed ;
-}
+}*/
 
 .riquadro{
   border:           1px solid black;
@@ -31,12 +31,12 @@ p.h2{
 }
 
 .da-comprare{
-  color:            MediumVioletRed ;
+  /*color:            MediumVioletRed ;*/
   background-color: pink ;
 }
 
 .comprato{
-  color:            MediumVioletRed   ;
+  /*color:            MediumVioletRed   ;*/
   background-color: HotPink  ;
 }
 
