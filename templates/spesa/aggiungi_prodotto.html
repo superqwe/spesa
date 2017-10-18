@@ -14,25 +14,31 @@
     <div class="row form-group">
 
         <div class="col-12 ">
-            <form action="/spesa/listaprodotti" method="post" name="prodotti">{% csrf_token %}
-                {% for prodotto in prodotti %}
 
+            <form action="/spesa/listaprodotti" method="post" name="prodotti">{% csrf_token %}
+
+                {% for prodotto in prodotti %}
                 <div class="row prodotto da-comprare">
+
                     <div class="col-2 text-center">
                         <input type="checkbox" name="ck{{prodotto.pk}}" value="{{prodotto.id}}">
                     </div>
+
                     <div class="col-10">
                         {{prodotto}}
                     </div>
 
                 </div>
-
                 {% endfor %}
+
+                <div class="col-12 text-center">
+                    <button type="submit" class="bottome-aggiungi-prodotti">Aggiungi</button>
+                </div>
+
+            </form>
+
         </div>
-        <div class="col-12 text-center">
-            <button type="submit" class="bottome-aggiungi-prodotti">Aggiungi</button>
-        </div>
-        </form>
+
     </div>
 
 </section>
