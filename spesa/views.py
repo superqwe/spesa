@@ -57,20 +57,32 @@ def index(request, azione=None, pk=None):
 def lista_prodotti_da_aggiungere(request):
     if request.method == 'POST':
 
-        for pk in request.POST.values():
+        # for pk in request.POST.values():
+        #
+        #
+        #     except ValueError:
+        #         print(pk)
 
-            try:
-                acquisto = Acquisto.objects.get(prodotto__id=pk)
-                acquisto.stato = '2'
-                acquisto.save()
+        for key, value in request.POST.items():
+            # print(k)#, request.POST.get(k))
+            if key.startswith('ck'):
+                try:
+                    acquisto = Acquisto.objects.get(prodotto__id=pk)
+                    acquisto.stato = '2'
+                    acquisto.save()
 
-            except Acquisto.DoesNotExist:
-                prodotto = Prodotto.objects.get(id=pk)
+                except Acquisto.DoesNotExist:
+                    prodotto = Prodotto.objects.get(id=pk)
+                    acquisto = Acquisto.objects.create(prodotto=prodotto, stato='2')
+                    acquisto.save()
+
+            elif key.startswith('nuovo-prodotto'):
+                prodotto = Prodotto.objects.create(nome=value)
                 acquisto = Acquisto.objects.create(prodotto=prodotto, stato='2')
                 acquisto.save()
 
-            except ValueError:
-                print(pk)
+                nuovo_prodotto = prodotto
+
 
     prodotti = views_util.lista_prodotti_fuori_carrello()
 

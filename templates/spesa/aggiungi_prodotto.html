@@ -12,13 +12,31 @@
         <div class="col-10">
             <p class="h2">Aggiungi prodotto</p>
         </div>
-        <div class="col-2 text-rigth">
+        <div class="col-2 text-rigth" id="mostra-form-nuovo-prodotto">
             <button>
                 <i class="material-icons">add</i>
             </button>
         </div>
-    </div>
 
+        {% if nuovo_prodotto.nome%}
+        <div class="col-12">
+            <p class="h5">{{nuovo_prodotto.nome}} è stato aggiunto al carrello</p>
+        </div>
+        {% endif %}
+
+    </div>
+    <div class="row form-group" id="form-nuovo-prodotto">
+        <div class="col-12">
+
+            <form action="/spesa/listaprodotti" method="post" name="nuovo-prodotto">{% csrf_token %}
+                <input type="text" placeholder="Nome nuovo prodotto" name="nuovo-prodotto">
+                <button type="submit">
+                    Aggiungi
+                </button>
+            </form>
+
+        </div>
+    </div>
     <div class="col-12 ">
 
         <form action="/spesa/listaprodotti" method="post" name="prodotti">{% csrf_token %}
