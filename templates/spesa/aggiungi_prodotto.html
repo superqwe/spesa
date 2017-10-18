@@ -8,36 +8,43 @@
 {% block section %}
 <section>
 
-    <p class="h2">Aggiungi prodotto
-        <span class="badge badge-secondary badge-info"></span></p>
-
     <div class="row form-group">
-
-        <div class="col-12 ">
-
-            <form action="/spesa/listaprodotti" method="post" name="prodotti">{% csrf_token %}
-
-                {% for prodotto in prodotti %}
-                <div class="row prodotto da-comprare">
-
-                    <div class="col-2 text-center">
-                        <input type="checkbox" name="ck{{prodotto.pk}}" value="{{prodotto.id}}">
-                    </div>
-
-                    <div class="col-10">
-                        {{prodotto}}
-                    </div>
-
-                </div>
-                {% endfor %}
-
-                <div class="col-12 text-center">
-                    <button type="submit" class="bottome-aggiungi-prodotti">Aggiungi</button>
-                </div>
-
-            </form>
-
+        <div class="col-10">
+            <p class="h2">Aggiungi prodotto</p>
         </div>
+        <div class="col-2 text-rigth">
+            <button>
+                <i class="material-icons">add</i>
+            </button>
+        </div>
+    </div>
+
+    <div class="col-12 ">
+
+        <form action="/spesa/listaprodotti" method="post" name="prodotti">{% csrf_token %}
+
+            {% for prodotto in prodotti %}
+            <div class="row prodotto da-comprare">
+
+                <div class="col-2 text-center">
+                    <input type="checkbox" name="ck{{prodotto.pk}}" value="{{prodotto.id}}">
+                </div>
+
+                <div class="col-10">
+                    {{prodotto}}
+                </div>
+
+            </div>
+            {% endfor %}
+
+            <div class="col-12 text-center">
+                <button type="submit" class="bottome-aggiungi-prodotti">Aggiungi Selezionati</button>
+
+            </div>
+
+        </form>
+
+    </div>
 
     </div>
 
