@@ -1,21 +1,3 @@
-/*@import url('https://fonts.googleapis.com/css?family=Fjalla+One');*/
-
-/*body{
-  font-family: 'Fjalla One', sans-serif;
-}*/
-
-/*nav{
-  border-bottom: 1px solid plum;
-}*/
-
-p.h2{
-  color:            pink;
-  /*background-color: MediumVioletRed ;*/
-}
-
-/*.container-fluid{
-  background-color: MediumVioletRed ;
-}*/
 
 .riquadro{
   border:           1px solid black;
@@ -31,19 +13,17 @@ p.h2{
 }
 
 .da-comprare{
-  /*color:            MediumVioletRed ;*/
   background-color: pink ;
 }
 
 .comprato{
-  /*color:            MediumVioletRed   ;*/
   background-color: HotPink  ;
 }
 
 .numero{
-  width: 100px;
+  width:            100px;
 }
 
 .bottome-aggiungi-prodotti{
-  margin: 5px;
+  margin:           5px;
 }

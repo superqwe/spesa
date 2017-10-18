@@ -105,6 +105,7 @@ venv.bak/
 *.bat
 db.sqlite3
 /.idea/
+/.sass-cache/
 /bootstrap-4.0.0-beta/
 /spesa/migrations/
 /static/spesa/css/my_bootstrap.css.map
