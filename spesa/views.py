@@ -27,7 +27,7 @@ def index(request, azione=None, pk=None):
         acquisto.save()
 
     da_comprare = Acquisto.objects.filter(stato='2')
-    da_comprare = [(acquisto, views_util.prezzo(acquisto.prodotto.nome)) for acquisto in da_comprare]
+    da_comprare = [(acquisto, views_util.prezzo(acquisto.prodotto)) for acquisto in da_comprare]
 
     comprato = Acquisto.objects.filter(stato='1')
 
@@ -38,7 +38,7 @@ def index(request, azione=None, pk=None):
     for acquisto in comprato:
 
         try:
-            p = views_util.prezzo(acquisto.prodotto.nome)[0].prezzo
+            p = views_util.prezzo(acquisto.prodotto)[0].prezzo
             prezzo.append(p)
         except IndexError:
             print('*** %s senza prezzo ***' % acquisto.prodotto)

@@ -1,29 +1,25 @@
-
-.riquadro{
-  border:           1px solid black;
-
-}
-
-.prodotto{
-  padding:          5px;
-  border:           1px solid plum;
-  border-top:       2px solid PaleVioletRed   ;
-  border-bottom:    2px solid  plum ;
-
-}
-
-.da-comprare{
-  background-color: pink ;
+.bottome-aggiungi-prodotti{
+  margin:           5px;
 }
 
 .comprato{
-  background-color: HotPink  ;
+  background-color: HotPink;
+}
+
+.da-comprare{
+  background-color: pink;
 }
 
 .numero{
   width:            100px;
 }
 
-.bottome-aggiungi-prodotti{
-  margin:           5px;
+.prodotto{
+  border-bottom:    2px solid #ff99aa;
+  border-top:       2px solid #ffe6ea;
+  padding:          5px;
+}
+
+.riquadro{
+  border:           1px solid black;
 }

@@ -6,8 +6,8 @@ from django.db.utils import ConnectionDoesNotExist
 from spesa.models import Prodotto, Prezzo, Acquisto
 
 
-def prezzo(nome_prodotto):
-    prezzi = Prezzo.objects.filter(prodotto__nome=nome_prodotto)
+def prezzo(prodotto):
+    prezzi = Prezzo.objects.filter(prodotto__id=prodotto.id)
 
     return prezzi
 
