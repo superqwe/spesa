@@ -61,12 +61,12 @@ def lista_prodotti_da_aggiungere(request):
 
             if key.startswith('ck'):
                 try:
-                    acquisto = Acquisto.objects.get(prodotto__id=pk)
+                    acquisto = Acquisto.objects.get(prodotto__id=value)
                     acquisto.stato = '2'
                     acquisto.save()
 
                 except Acquisto.DoesNotExist:
-                    prodotto = Prodotto.objects.get(id=pk)
+                    prodotto = Prodotto.objects.get(id=value)
                     acquisto = Acquisto.objects.create(prodotto=prodotto, stato='2')
                     acquisto.save()
 
