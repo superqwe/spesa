@@ -110,5 +110,3 @@ db*.sqlite3
 /spesa/migrations/
 /static/spesa/css/my_bootstrap.css.map
 
-
-
