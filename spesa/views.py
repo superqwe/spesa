@@ -57,14 +57,8 @@ def index(request, azione=None, pk=None):
 def lista_prodotti_da_aggiungere(request):
     if request.method == 'POST':
 
-        # for pk in request.POST.values():
-        #
-        #
-        #     except ValueError:
-        #         print(pk)
-
         for key, value in request.POST.items():
-            # print(k)#, request.POST.get(k))
+
             if key.startswith('ck'):
                 try:
                     acquisto = Acquisto.objects.get(prodotto__id=pk)
@@ -82,7 +76,6 @@ def lista_prodotti_da_aggiungere(request):
                 acquisto.save()
 
                 nuovo_prodotto = prodotto
-
 
     prodotti = views_util.lista_prodotti_fuori_carrello()
 

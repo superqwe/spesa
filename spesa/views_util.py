@@ -16,9 +16,9 @@ def lista_prodotti_fuori_carrello():
     q_da_comprate = Q(stato='2')
     q_comprato = Q(stato='1')
 
-    acquisti_nel_carrello = Acquisto.objects.filter(q_da_comprate | q_comprato)
-    prodotti_nel_carrello = set([acquisto.prodotto for acquisto in acquisti_nel_carrello])
+    id_acquisti_nel_carrello = Acquisto.objects.filter(q_da_comprate | q_comprato).values_list('prodotto',
+                                                                                               flat=True)
 
-    lprodotti = set(Prodotto.objects.exclude(nome='Acquisto__prodotto__nome'))
+    fuori_carrello = Prodotto.objects.exclude(pk__in=list(id_acquisti_nel_carrello))
 
-    return lprodotti - prodotti_nel_carrello
+    return fuori_carrello
