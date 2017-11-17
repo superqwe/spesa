@@ -11,6 +11,8 @@ from spesa.models import Acquisto, Prodotto
 from pprint import pprint as pp
 
 
+# todo: da aggiungere pulsante per cancellare tutti i prodotti acquistati
+
 def index(request, azione=None, pk=None):
     if pk:
         acquisto = Acquisto.objects.get(pk=pk)

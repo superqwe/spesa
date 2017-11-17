@@ -10,16 +10,21 @@ fai_da_comprare.short_description= 'Segna i selezionati come da comprare'
 # opzioni
 
 class AcquistoAdmin(admin.ModelAdmin):
-    list_display = ('prodotto', 'quantita', 'stato')
     actions = [fai_da_comprare]
+    list_display = ('prodotto', 'quantita', 'stato')
+    list_filter = ('stato',)
+    search_fields= ['prodotto__nome', 'prodotto__marca']
+
 
 
 class ProdottoAdmin(admin.ModelAdmin):
     list_display = ('nome', 'marca')
+    search_fields= ['nome', 'marca']
 
 
 class PrezzoAdmin(admin.ModelAdmin):
     list_display = ('prodotto', 'negozio', 'prezzo', 'prezzo_in_offerta')
+    search_fields= ['prodotto__nome', 'prodotto__marca']
 
 
 admin.site.register(Acquisto, AcquistoAdmin)
