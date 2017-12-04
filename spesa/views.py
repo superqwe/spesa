@@ -14,19 +14,27 @@ from pprint import pprint as pp
 # todo: da aggiungere pulsante per cancellare tutti i prodotti acquistati
 
 def index(request, azione=None, pk=None):
-    if pk:
-        acquisto = Acquisto.objects.get(pk=pk)
+    if azione == 'elimina' and pk == 'tutto':
+        acquistati = Acquisto.objects.filter(stato='1')
 
-        if azione == 'acquistato':
-            acquisto.stato = 1
-
-        elif azione == 'elimina':
+        for acquisto in acquistati:
             acquisto.stato = 0
+            acquisto.save()
 
-        elif azione == 'riacquista':
-            acquisto.stato = 2
+    else:
+        if pk:
+            acquisto = Acquisto.objects.get(pk=pk)
 
-        acquisto.save()
+            if azione == 'acquistato':
+                acquisto.stato = 1
+
+            elif azione == 'elimina':
+                acquisto.stato = 0
+
+            elif azione == 'riacquista':
+                acquisto.stato = 2
+
+            acquisto.save()
 
     da_comprare = Acquisto.objects.filter(stato='2')
     da_comprare = [(acquisto, views_util.prezzo(acquisto.prodotto)) for acquisto in da_comprare]

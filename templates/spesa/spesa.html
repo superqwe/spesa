@@ -54,10 +54,22 @@
 
 <section>
 
-    <p class="h2">
-        Comprati
-        <span class="badge badge-secondary badge-info">{{prezzo_totale}}€</span>
-    </p>
+    <div class="row">
+        <div class="col-9">
+            <p class="h2"> Comprati
+                <span class="badge badge-secondary badge-info">{{prezzo_totale}}€</span>
+            </p>
+        </div>
+
+        <div class="col-3  align-self-center text-right">
+            <form action="/spesa/elimina/tutto">
+                <button type="submit">
+                    <i class="material-icons">remove_shopping_cart</i>
+                </button>
+            </form>
+        </div>
+    </div>
+
 
     <div class="row ">
 
