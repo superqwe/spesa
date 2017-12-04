@@ -15,11 +15,17 @@
 }
 
 .prodotto{
-  border-bottom:    2px solid #ff99aa;
-  border-top:       2px solid #ffe6ea;
+  border-bottom:    1px solid #ff99aa;
+  border-right:     1px solid #ff99aa;
+  border-top:       1px solid #ffe6ea;
+  border-left:      1px solid #ffe6ea;
   padding:          5px;
 }
 
 .riquadro{
   border:           1px solid black;
+}
+
+.offerta{
+  font-weight:      bold;
 }

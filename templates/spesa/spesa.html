@@ -36,7 +36,12 @@
                     <div>
                         {% for prezzo in prezzi%}
                         <div>
-                            <small>{{prezzo.prezzo}}€ - {{prezzo.negozio}}</small>
+                            <small>{{prezzo.prezzo}}
+                                {% if prezzo.prezzo_in_offerta %}
+                                    / <span class="offerta">{{prezzo.prezzo_in_offerta}}</span>
+                                {% endif %}
+                                € - {{prezzo.negozio}}
+                            </small>
                         </div>
                         {% endfor %}
                     </div>
@@ -78,12 +83,14 @@
 
             <div class="row">
 
-                <div class="col-2 ">
+                <div class="col-2">
                     <form action="/spesa/riacquista/{{acquisto.pk}}">
                         <button type="submit">
                             <i class="material-icons">shopping_cart</i>
                         </button>
                     </form>
+                </div>
+                <div class="col-2">
                     <form action="/spesa/elimina/{{acquisto.pk}}">
                         <button type="submit">
                             <i class="material-icons">remove_shopping_cart</i>
@@ -91,7 +98,7 @@
                     </form>
                 </div>
 
-                <div class="col-10 ">
+                <div class="col-8">
                     <div>
                         {{acquisto.quantita}}x
                         {{acquisto.prodotto}}
