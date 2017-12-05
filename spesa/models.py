@@ -11,7 +11,7 @@ class Prodotto(models.Model):
         marca = self.marca if self.marca else ''
         return '%s - %s' % (self.nome, marca)
 
-    nome = models.CharField(max_length=50)
+    nome = models.CharField(max_length=100)
     marca = models.CharField(null=True, blank=True, max_length=50)
 
 
@@ -63,3 +63,17 @@ class Prezzo(models.Model):
 
     def __str__(self):
         return '%s - %s - %s' % (self.prodotto, self.negozio, self.prezzo)
+
+
+class Categoria(models.Model):
+    nome = models.CharField(max_length=100)
+    prodotti = models.ManyToManyField(Prodotto)
+    note = models.TextField(null=True, blank=True)
+
+    class Meta:
+        ordering = ('nome',)
+        verbose_name = "Categoria"
+        verbose_name_plural = "Categorie"
+
+    def __str__(self):
+        return '%s' % self.nome
