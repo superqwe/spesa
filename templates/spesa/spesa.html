@@ -36,7 +36,12 @@
                     <div>
                         {% for prezzo in prezzi%}
                         <div>
-                            <small>{{prezzo.prezzo}}
+                            <small>
+                              {% if prezzo.prezzo %}
+                                {{prezzo.prezzo}}
+                              {% else %}
+                                ???
+                              {% endif %}
                                 {% if prezzo.prezzo_in_offerta %}
                                     / <span class="offerta">{{prezzo.prezzo_in_offerta}}</span>
                                 {% endif %}

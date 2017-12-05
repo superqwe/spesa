@@ -52,12 +52,12 @@ class Negozio(models.Model):
 
 class Prezzo(models.Model):
     prodotto = models.ForeignKey(Prodotto, on_delete=models.CASCADE)
-    prezzo = models.DecimalField(max_digits=4, decimal_places=2)
-    prezzo_in_offerta = models.DecimalField(null=True, blank=True, max_digits=3, decimal_places=2)
+    prezzo = models.DecimalField(null=True, blank=True, max_digits=5, decimal_places=2)
+    prezzo_in_offerta = models.DecimalField(null=True, blank=True, max_digits=5, decimal_places=2)
     negozio = models.ForeignKey(Negozio, on_delete=models.CASCADE)
 
     class Meta:
-        ordering = ('prodotto', 'prezzo','negozio')
+        ordering = ('prodotto', 'prezzo', 'negozio')
         verbose_name = "Prezzo"
         verbose_name_plural = "Prezzi"
 

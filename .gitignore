@@ -109,4 +109,4 @@ db*.sqlite3
 /bootstrap-4.0.0-beta/
 /spesa/migrations/
 /static/spesa/css/my_bootstrap.css.map
-
+z*.txt
