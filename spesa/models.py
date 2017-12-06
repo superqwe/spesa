@@ -1,38 +1,51 @@
 from django.db import models
 
 
+class Categoria(models.Model):
+    nome = models.CharField(max_length=100)
+    note = models.TextField(null=True, blank=True)
+
+    class Meta:
+        ordering = ('nome',)
+        verbose_name = "Categoria"
+        verbose_name_plural = "Categorie"
+
+    def __str__(self):
+        return '%s' % self.nome
+
+
 class Prodotto(models.Model):
     class Meta:
-        ordering = ('nome', 'marca')
+        ordering = ('categoria', 'nome', 'marca')
         verbose_name = "Prodotto"
         verbose_name_plural = "Prodotti"
 
     def __str__(self):
         marca = self.marca if self.marca else ''
-        return '%s - %s' % (self.nome, marca)
+        categoria = self.categoria if self.categoria else ''
+        return '%s - %s - %s' % (self.nome, marca, categoria)
 
     nome = models.CharField(max_length=100)
     marca = models.CharField(null=True, blank=True, max_length=50)
+    categoria = models.ForeignKey(Categoria, null=True, blank=True)
 
 
-class Acquisto(models.Model):
-    DA_COMPRARE = 2
-    COMPRATO = 1
-    FUORI_LISTA = 0
+class Carrello(models.Model):
+    DA_COMPRARE = 1
+    COMPRATO = 0
     STATO_PRODOTTO = (
         (DA_COMPRARE, 'Da comprare'),
         (COMPRATO, 'Comprato'),
-        (FUORI_LISTA, 'Fuori lista')
     )
 
     prodotto = models.ForeignKey(Prodotto, on_delete=models.CASCADE)
     quantita = models.IntegerField(default=1)
-    stato = models.IntegerField(choices=STATO_PRODOTTO, default=2)
+    stato = models.IntegerField(choices=STATO_PRODOTTO, default=1)
 
     class Meta:
         ordering = ('prodotto',)
-        verbose_name = "Acquisto"
-        verbose_name_plural = "Acquisti"
+        verbose_name = "Carrello"
+        verbose_name_plural = "Carrello"
 
     def __str__(self):
         return '%s - %s' % (self.prodotto, self.quantita)
@@ -52,9 +65,9 @@ class Negozio(models.Model):
 
 class Prezzo(models.Model):
     prodotto = models.ForeignKey(Prodotto, on_delete=models.CASCADE)
+    negozio = models.ForeignKey(Negozio, on_delete=models.CASCADE)
     prezzo = models.DecimalField(null=True, blank=True, max_digits=5, decimal_places=2)
     prezzo_in_offerta = models.DecimalField(null=True, blank=True, max_digits=5, decimal_places=2)
-    negozio = models.ForeignKey(Negozio, on_delete=models.CASCADE)
 
     class Meta:
         ordering = ('prodotto', 'prezzo', 'negozio')
@@ -63,17 +76,3 @@ class Prezzo(models.Model):
 
     def __str__(self):
         return '%s - %s - %s' % (self.prodotto, self.negozio, self.prezzo)
-
-
-class Categoria(models.Model):
-    nome = models.CharField(max_length=100)
-    prodotti = models.ManyToManyField(Prodotto)
-    note = models.TextField(null=True, blank=True)
-
-    class Meta:
-        ordering = ('nome',)
-        verbose_name = "Categoria"
-        verbose_name_plural = "Categorie"
-
-    def __str__(self):
-        return '%s' % self.nome

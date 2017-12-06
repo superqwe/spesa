@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from spesa.models import Acquisto, Prodotto, Negozio, Prezzo, Categoria
+from spesa.models import Carrello, Prodotto, Negozio, Prezzo, Categoria
 
 
 # actions
@@ -21,8 +21,9 @@ class AcquistoAdmin(admin.ModelAdmin):
 
 
 class ProdottoAdmin(admin.ModelAdmin):
-    list_display = ('nome', 'marca')
-    search_fields = ['nome', 'marca']
+    list_display = ('nome', 'marca', 'categoria')
+    list_filter = ('categoria',)
+    search_fields = ['nome', 'marca', 'categoria']
 
 
 class PrezzoAdmin(admin.ModelAdmin):
@@ -34,7 +35,7 @@ class CategoriaAdmin(admin.ModelAdmin):
     list_display = ('nome', 'note')
 
 
-admin.site.register(Acquisto, AcquistoAdmin)
+admin.site.register(Carrello, AcquistoAdmin)
 admin.site.register(Categoria, CategoriaAdmin)
 admin.site.register(Negozio)
 admin.site.register(Prodotto, ProdottoAdmin)
