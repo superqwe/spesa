@@ -6,7 +6,10 @@
 
 
 {% block section %}
+
 <section>
+
+    <!-- aggiungi prodotto -->
 
     <div class="row form-group">
         <div class="col-9">
@@ -37,10 +40,16 @@
 
         </div>
     </div>
-    <div class="col-12 ">
+
+
+    <!-- lista prodotti per categoria -->
+    <div class="col-12">
+        {% for categoria, prodotti in prodotti_per_categoria%}
+        <div class="row categoria">
+            <h3>{{categoria}}</h3>
+        </div>
 
         <form action="/spesa/listaprodotti" method="post" name="prodotti">{% csrf_token %}
-
             {% for prodotto in prodotti %}
             <div class="row prodotto da-comprare">
 
@@ -49,23 +58,21 @@
                 </div>
 
                 <div class="col-10">
-                    {{prodotto}}
+                    {{prodotto.nome}}
+                    {% if prodotto.marca%}
+                    - {{prodotto.marca}}
+                    {% endif %}
                 </div>
 
             </div>
             {% endfor %}
-
             <div class="col-12 text-center">
                 <button type="submit" class="bottome-aggiungi-prodotti">Aggiungi Selezionati</button>
-
             </div>
+            {% endfor %}
 
         </form>
-
     </div>
-
-    </div>
-
 </section>
 
 
