@@ -29,7 +29,7 @@ def lista_prodotto_per_categoria():
 
     prodotti_per_categoria = []
     for categoria in categorie:
-        prodotti = Prodotto.objects.filter(categoria=categoria)
+        prodotti = Prodotto.objects.filter(categoria=categoria, carrello__stato=None)
         prodotti_per_categoria.append((categoria, prodotti))
 
     prodotti_vari = Prodotto.objects.filter(categoria=None)

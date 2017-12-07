@@ -23,23 +23,26 @@ def index(request, azione=None, pk=None):
 
     else:
         if pk:
-            acquisto = Carrello.objects.get(pk=pk)
+            try:
+                acquisto = Carrello.objects.get(pk=pk)
 
-            if azione == 'acquistato':
-                acquisto.stato = 1
+                if azione == 'acquistato':
+                    acquisto.stato = 0
+                    acquisto.save()
 
-            elif azione == 'elimina':
-                acquisto.stato = 0
+                elif azione == 'elimina':
+                    acquisto.delete()
 
-            elif azione == 'riacquista':
-                acquisto.stato = 2
+                elif azione == 'riacquista':
+                    acquisto.stato = 1
+                    acquisto.save()
+            except ObjectDoesNotExist:
+                print(pk, 'non esiste')
 
-            acquisto.save()
-
-    da_comprare = Carrello.objects.filter(stato='2')
+    da_comprare = Carrello.objects.filter(stato='1')
     da_comprare = [(acquisto, views_util.prezzo(acquisto.prodotto)) for acquisto in da_comprare]
 
-    comprato = Carrello.objects.filter(stato='1')
+    comprato = Carrello.objects.filter(stato='0')
 
     # todo: nel caso di più prezzi per un prodotto, selezionare quello del negozio dove si effettua l'acquisto
     # seleziona il prezzo più basso
@@ -72,17 +75,17 @@ def lista_prodotti_da_aggiungere(request):
             if key.startswith('ck'):
                 try:
                     acquisto = Carrello.objects.get(prodotto__id=value)
-                    acquisto.stato = '2'
+                    acquisto.stato = '1'
                     acquisto.save()
 
                 except Carrello.DoesNotExist:
                     prodotto = Prodotto.objects.get(id=value)
-                    acquisto = Carrello.objects.create(prodotto=prodotto, stato='2')
+                    acquisto = Carrello.objects.create(prodotto=prodotto, stato='1')
                     acquisto.save()
 
             elif key.startswith('nuovo-prodotto'):
                 prodotto = Prodotto.objects.create(nome=value)
-                acquisto = Carrello.objects.create(prodotto=prodotto, stato='2')
+                acquisto = Carrello.objects.create(prodotto=prodotto, stato='1')
                 acquisto.save()
 
                 nuovo_prodotto = prodotto
