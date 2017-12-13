@@ -13,12 +13,11 @@
 
     <div class="row form-group">
         <div class="col-9">
-            <p class="h2">Aggiungi prodotto</p>
-        </div>
-        <div class="col-3" id="mostra-form-nuovo-prodotto">
-            <button class="bottome-aggiungi-prodotti">
-                <i class="material-icons">add</i>
-            </button>
+            <p class="h2">
+              <button class="bottome-aggiungi-prodotti" id="mostra-form-nuovo-prodotto">
+                  <i class="material-icons">add</i>
+              </button>
+              Aggiungi prodotto</p>
         </div>
 
         {% if nuovo_prodotto.nome%}
@@ -46,7 +45,10 @@
     <div class="col-12">
         {% for categoria, prodotti in prodotti_per_categoria%}
         <div class="row categoria">
-            <h3>{{categoria}}</h3>
+            <h3>
+              <button class="bottome-aggiungi-prodotti">
+                <i class="material-icons">add</i>
+            </button> {{categoria}}</h3>
         </div>
 
         <form action="/spesa/listaprodotti" method="post" name="prodotti">{% csrf_token %}
