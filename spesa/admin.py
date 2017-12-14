@@ -28,6 +28,7 @@ class ProdottoAdmin(admin.ModelAdmin):
 
 class PrezzoAdmin(admin.ModelAdmin):
     list_display = ('prodotto', 'negozio', 'prezzo', 'prezzo_in_offerta')
+    list_filter = ('negozio', 'prodotto__categoria')
     search_fields = ['prodotto__nome', 'prodotto__marca']
 
 

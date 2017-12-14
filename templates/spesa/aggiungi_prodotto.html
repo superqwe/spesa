@@ -9,73 +9,73 @@
 
 <section>
 
-    <!-- aggiungi prodotto -->
+  <!-- aggiungi prodotto -->
 
-    <div class="row form-group">
-        <div class="col-9">
-            <p class="h2">
-              <button class="bottome-aggiungi-prodotti" id="mostra-form-nuovo-prodotto">
-                  <i class="material-icons">add</i>
-              </button>
-              Aggiungi prodotto</p>
-        </div>
+  <div class="row form-group">
+    <div class="col-9">
+      <p class="h2">
+        <button class="bottome-aggiungi-prodotti" id="mostra-form-nuovo-prodotto">
+          <i class="material-icons">add</i>
+        </button>
+        Aggiungi prodotto</p>
+      </div>
 
-        {% if nuovo_prodotto.nome%}
-        <div class="col-12">
-            <p class="h5">{{nuovo_prodotto.nome}} è stato aggiunto al carrello</p>
-        </div>
-        {% endif %}
+      {% if nuovo_prodotto.nome%}
+      <div class="col-12">
+        <p class="h5">{{nuovo_prodotto.nome}} è stato aggiunto al carrello</p>
+      </div>
+      {% endif %}
 
     </div>
     <div class="row form-group" id="form-nuovo-prodotto">
-        <div class="col-12">
+      <div class="col-12">
 
-            <form action="/spesa/listaprodotti" method="post" name="nuovo-prodotto">{% csrf_token %}
-                <input type="text" placeholder="Nome nuovo prodotto" name="nuovo-prodotto">
-                <button type="submit">
-                    Aggiungi
-                </button>
-            </form>
+        <form action="/spesa/listaprodotti" method="post" name="nuovo-prodotto">{% csrf_token %}
+          <input type="text" placeholder="Nome nuovo prodotto" name="nuovo-prodotto">
+          <button type="submit">
+            Aggiungi
+          </button>
+        </form>
 
-        </div>
+      </div>
     </div>
 
 
     <!-- lista prodotti per categoria -->
     <div class="col-12">
-        {% for categoria, prodotti in prodotti_per_categoria%}
-        <div class="row categoria">
-            <h3>
-              <button class="bottome-aggiungi-prodotti">
-                <i class="material-icons">add</i>
-            </button> {{categoria}}</h3>
+      {% for categoria, prodotti in prodotti_per_categoria%}
+      <div class="row categoria">
+        <h3>
+          <button class="bottome-aggiungi-prodotti">
+            <i class="material-icons">add</i>
+          </button> {{categoria}}</h3>
         </div>
 
         <form action="/spesa/listaprodotti" method="post" name="prodotti">{% csrf_token %}
-            {% for prodotto in prodotti %}
-            <div class="row prodotto da-comprare">
+          {% for prodotto in prodotti %}
+          <div class="row prodotto da-comprare">
 
-                <div class="col-2 text-center">
-                    <input type="checkbox" name="ck{{prodotto.pk}}" value="{{prodotto.id}}">
-                </div>
-
-                <div class="col-10">
-                    {{prodotto.nome}}
-                    {% if prodotto.marca%}
-                    - {{prodotto.marca}}
-                    {% endif %}
-                </div>
-
+            <div class="col-2 text-center">
+              <input type="checkbox" name="ck{{prodotto.pk}}" value="{{prodotto.id}}">
             </div>
-            {% endfor %}
-            <div class="col-12 text-center">
-                <button type="submit" class="bottome-aggiungi-prodotti">Aggiungi Selezionati</button>
+
+            <div class="col-10">
+              {{prodotto.nome}}
+              {% if prodotto.marca%}
+              - {{prodotto.marca}}
+              {% endif %}
             </div>
-            {% endfor %}
+
+          </div>
+          {% endfor %}
+          <div class="col-12 text-center">
+            <button type="submit" class="bottome-aggiungi-prodotti">Aggiungi Selezionati</button>
+          </div>
+          {% endfor %}
 
         </form>
-    </div>
-</section>
+      </div>
+    </section>
 
 
-{% endblock%}
+    {% endblock%}

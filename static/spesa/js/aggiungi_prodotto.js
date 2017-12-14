@@ -8,6 +8,4 @@ $(function(){
   $bottoneNuovoProdotto.on('click', function () {
     $formNuovoProdotto.show();
   })
-
-
 });
