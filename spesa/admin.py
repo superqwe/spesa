@@ -23,7 +23,7 @@ class AcquistoAdmin(admin.ModelAdmin):
 class ProdottoAdmin(admin.ModelAdmin):
     list_display = ('nome', 'marca', 'categoria')
     list_filter = ('categoria',)
-    search_fields = ['nome', 'marca', 'categoria']
+    search_fields = ['nome', 'marca', 'categoria__nome']
 
 
 class PrezzoAdmin(admin.ModelAdmin):
