@@ -11,15 +11,12 @@ from spesa.models import Carrello, Prodotto
 from pprint import pprint as pp
 
 
-# todo: da aggiungere pulsante per cancellare tutti i prodotti acquistati
-
 def index(request, azione=None, pk=None):
     if azione == 'elimina' and pk == 'tutto':
-        acquistati = Carrello.objects.filter(stato='1')
+        acquistati = Carrello.objects.filter(stato='0')
 
         for acquisto in acquistati:
-            acquisto.stato = 0
-            acquisto.save()
+            acquisto.delete()
 
     else:
         if pk:
