@@ -33,7 +33,7 @@ class PrezzoAdmin(admin.ModelAdmin):
 
 
 class CategoriaAdmin(admin.ModelAdmin):
-    list_display = ('nome', 'note')
+    list_display = ('nome', 'visualizza_nota', 'note')
 
 
 admin.site.register(Carrello, AcquistoAdmin)
