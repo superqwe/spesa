@@ -53,6 +53,7 @@ def index(request, azione=None, pk=None):
         except IndexError:
             print('*** %s senza prezzo ***' % acquisto.prodotto)
 
+    prezzo = [x for x in prezzo if x]
     prezzo_totale = sum(prezzo)
 
     n_da_comprare = len(da_comprare)
